@@ -38,6 +38,7 @@ Data/
     └── healthy/
 
     | Class | Description |
+
 |---|---|
 | Angular Leaf Spot | Bean leaf affected by angular leaf spot disease |
 | Bean Rust | Bean leaf affected by bean rust disease |
