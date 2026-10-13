@@ -36,13 +36,15 @@ Data/
     ├── angular_leaf_spot/
     ├── bean_rust/
     └── healthy/
+```
 
-    | Class | Description |
-
+| Class | Description |
 |---|---|
 | Angular Leaf Spot | Bean leaf affected by angular leaf spot disease |
 | Bean Rust | Bean leaf affected by bean rust disease |
 | Healthy | Healthy bean leaf |
+
+---
 
 ## 🧠 Model Approach
 
@@ -107,55 +109,23 @@ After training, the model was evaluated on the unseen **test dataset containing 
 
 The model achieved an overall test accuracy of approximately **92%**, demonstrating strong performance on unseen bean leaf images.
 
-## 🎯 Model Training
-
-The model was trained for a maximum of **20 epochs**.
-
-**EarlyStopping** was used by monitoring the validation loss to prevent unnecessary training and reduce the possibility of overfitting.
-
-During training, both training and validation performance improved overall.
-
-The **best validation performance was achieved at Epoch 11**, where:
-
-- **Training Accuracy:** 89.46%
-- **Validation Accuracy:** 93.23%
-- **Validation Loss:** 0.2211
-
-After Epoch 11, the validation loss increased:
-
-- Epoch 11 → **0.2211**
-- Epoch 12 → **0.3071**
-
-The validation loss remained higher in the following epochs, indicating that the model had reached its best generalization point and further training was no longer improving validation performance.
-
-Because `restore_best_weights=True` was used, the model retained the weights from the epoch with the **lowest validation loss**, which was Epoch 11.
-
-### Training Insight
-
-The training results indicate that the model achieved strong validation performance while maintaining a relatively small difference between training and validation accuracy. This suggests **reduced overfitting and good generalization**.
-
 ---
 
-## 📊 Final Test Results
+## Confusion Matrix
 
-After training, the model was evaluated on the unseen **test dataset containing 128 images**.
+```
+[[41  2  0]
+ [ 6 36  1]
+ [ 0  1 41]]
+```
 
-### Test Performance
-
-- **Test Loss:** 0.2327
-- **Test Accuracy:** 92.19%
-
-The model achieved an overall test accuracy of approximately **92%**, demonstrating strong performance on unseen bean leaf images.
+ The rows represent the actual classes and the columns represent the predicted classes.
 
 | Actual Class | Predicted Angular Leaf Spot | Predicted Bean Rust | Predicted Healthy |
 |---|---:|---:|---:|
 | Angular Leaf Spot | 41 | 2 | 0 |
 | Bean Rust | 6 | 36 | 1 |
 | Healthy | 0 | 1 | 41 |
-
-[[41  2  0]
- [ 6 36  1]
- [ 0  1 41]]
 
  ### Confusion Matrix Insight
 
@@ -175,6 +145,8 @@ The model achieved an overall test accuracy of approximately **92%**, demonstrat
 | **Macro Average** | **0.92** | **0.92** | **0.92** | **128** |
 | **Weighted Average** | **0.92** | **0.92** | **0.92** | **128** |
 
+---
+
 ### Classification Report Insight
 
 - **Healthy** achieved the best overall performance with an **F1-score of 0.98**, showing that the model was highly effective at identifying healthy bean leaves.
@@ -183,6 +155,8 @@ The model achieved an overall test accuracy of approximately **92%**, demonstrat
 - However, Bean Rust had a comparatively lower **recall of 0.84**, indicating that some actual Bean Rust images were misclassified as other classes.
 - The **macro average F1-score of 0.92** indicates that the model maintained strong and relatively balanced performance across all three classes.
 - The **weighted average F1-score of 0.92** further confirms the model's strong overall classification performance on the test dataset.
+
+---
 
 ## 📈 Overall Results & Insights
 
@@ -227,6 +201,7 @@ BeanLeafClassifier-cnn/
 ├── README.md
 ├── requirements.txt
 └── .gitignore
+```
 
 ## 👨‍💻 Author
 
